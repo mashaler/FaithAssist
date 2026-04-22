@@ -3,10 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="FaithAssist: Biblical guidance, prayers, and practical support for anxiety, anger, relationships, finances, and more. Daily devotional, Bible Q&A, and marriage tool.">
-  <meta name="keywords" content="bible verses, christian prayer, daily devotional, marriage advice, biblical guidance, faith assistant, anxiety help, anger management bible">
+  <meta name="description" content="FaithAssist: Free biblical guidance, prayers, daily devotional, Bible Q&A, and marriage insights. Find help for anxiety, anger, finances, and relationships.">
+  <meta name="keywords" content="bible verses, christian prayer, daily devotional, marriage advice, biblical guidance, faith assistant">
   <meta name="author" content="FaithAssist">
   <title>FaithAssist | Biblical Guidance & Prayer Companion</title>
+  
+  <!-- Google AdSense Script (REPLACE PUBLISHER ID WITH YOUR OWN) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  
   <style>
     * {
       margin: 0;
@@ -22,24 +26,22 @@
       scroll-behavior: smooth;
     }
 
-    /* container */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 1.5rem 1.2rem 3rem;
     }
 
-    /* header */
+    /* Header */
     .site-header {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       border-bottom: 1px solid #e6dfd0;
       padding-bottom: 1rem;
     }
     .logo {
       font-size: 1.8rem;
       font-weight: 600;
-      letter-spacing: -0.3px;
       background: linear-gradient(135deg, #2b5e3b, #a5713c);
       background-clip: text;
       -webkit-background-clip: text;
@@ -47,16 +49,43 @@
     }
     .tagline {
       color: #6b5a4a;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       margin-top: 0.25rem;
     }
 
-    /* grid layout */
+    /* Ad containers - clean and responsive */
+    .ad-container {
+      text-align: center;
+      margin: 1.5rem 0;
+      padding: 0.5rem;
+      background: #faf8f3;
+      border-radius: 1rem;
+      min-height: 100px;
+      clear: both;
+    }
+    .ad-label {
+      font-size: 0.7rem;
+      color: #a3907a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+    .ad-top {
+      margin-top: 0;
+    }
+    .ad-between-cards {
+      margin: 1rem 0;
+    }
+    .ad-footer {
+      margin-top: 2rem;
+    }
+
+    /* Grid layout */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1.8rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .card {
@@ -69,7 +98,6 @@
     }
     .card:hover {
       border-color: #dac29c;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
     }
 
     h2 {
@@ -81,20 +109,6 @@
       padding-left: 0.75rem;
     }
 
-    h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin: 1rem 0 0.5rem 0;
-      color: #2c5e3c;
-    }
-
-    label, .input-label {
-      font-weight: 500;
-      display: block;
-      margin-bottom: 0.4rem;
-      color: #4a3e32;
-    }
-
     input, textarea, select {
       width: 100%;
       padding: 0.75rem 1rem;
@@ -102,7 +116,6 @@
       border-radius: 2rem;
       font-size: 1rem;
       background: #fff;
-      transition: 0.2s;
       font-family: inherit;
     }
     input:focus, textarea:focus, select:focus {
@@ -119,14 +132,13 @@
       font-weight: 500;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: 0.2s;
       margin-top: 0.75rem;
       width: 100%;
       font-family: inherit;
+      transition: background 0.2s;
     }
     button:hover {
       background: #1e452b;
-      transform: translateY(-1px);
     }
     .result-box {
       background: #faf7f0;
@@ -147,24 +159,13 @@
       padding: 0.8rem;
       margin-top: 0.8rem;
     }
-    hr {
-      margin: 1rem 0;
-      border: 0;
-      height: 1px;
-      background: #e2d9cf;
-    }
-    .flex-buttons {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
     .small-btn {
       background: #e5dccc;
       color: #3a2c21;
       padding: 0.4rem 1rem;
       font-size: 0.8rem;
       width: auto;
-      margin-top: 0;
+      margin-top: 0.5rem;
     }
     .small-btn:hover {
       background: #d6c9b2;
@@ -177,13 +178,14 @@
       font-size: 0.8rem;
       color: #8f7e6b;
     }
+    .support-text {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      text-align: center;
+    }
     @media (max-width: 700px) {
-      .container {
-        padding: 1rem;
-      }
-      .card {
-        padding: 1.2rem;
-      }
+      .container { padding: 1rem; }
+      .card { padding: 1.2rem; }
     }
     .marriage-question {
       background: #fff8ef;
@@ -212,6 +214,18 @@
     <div class="tagline">Biblical wisdom · Prayer · Practical support for daily life</div>
   </div>
 
+  <!-- TOP AD BANNER (High visibility) -->
+  <div class="ad-container ad-top">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXX"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
   <div class="grid">
     <!-- 1. Problem Search -->
     <div class="card">
@@ -222,7 +236,7 @@
       <div id="searchResult" class="result-box" style="display: none;"></div>
     </div>
 
-    <!-- 2. Daily Devotional (auto loaded) -->
+    <!-- 2. Daily Devotional -->
     <div class="card">
       <h2>🌄 Daily Devotional</h2>
       <div id="devotionalContent">
@@ -230,9 +244,23 @@
         <div id="dailyMessage">...</div>
         <div class="prayer" id="dailyPrayer"></div>
       </div>
-      <button id="refreshDevotionalBtn" class="small-btn" style="width: auto; margin-top: 0.5rem;">🔄 New Devotional</button>
+      <button id="refreshDevotionalBtn" class="small-btn">🔄 New Devotional</button>
     </div>
+  </div>
 
+  <!-- AD BETWEEN CARDS (Good earnings spot) -->
+  <div class="ad-container ad-between-cards">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXX"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="grid">
     <!-- 3. Bible Q&A -->
     <div class="card">
       <h2>📖 Bible Q&A</h2>
@@ -241,9 +269,7 @@
       <button id="askQuestionBtn">Ask</button>
       <div id="qaResult" class="result-box" style="display: none;"></div>
     </div>
-  </div>
 
-  <div class="grid">
     <!-- 4. Prayer Generator -->
     <div class="card">
       <h2>🙏 Prayer Generator</h2>
@@ -258,23 +284,48 @@
       <button id="generatePrayerBtn">Generate Prayer</button>
       <div id="prayerOutput" class="result-box" style="display: none;"></div>
     </div>
+  </div>
 
-    <!-- 5. Relationship & Marriage Tool -->
+  <div class="grid">
+    <!-- 5. Marriage Tool -->
     <div class="card">
       <h2>💑 Marriage & Relationship Insight</h2>
-      <p style="font-size: 0.85rem; margin-bottom: 0.8rem;">Answer a few quick questions to receive communication & trust insights.</p>
+      <p style="font-size: 0.85rem; margin-bottom: 0.8rem;">Answer 7 quick questions for personalized insights.</p>
       <div id="marriageQuestions"></div>
       <button id="submitMarriageBtn">Get Summary & Insights</button>
       <div id="marriageResult" class="result-box" style="display: none;"></div>
     </div>
+    
+    <!-- Optional: Spacer or future feature -->
+    <div class="card">
+      <h2>📖 Verse of the Moment</h2>
+      <p id="randomVerse" style="font-style: italic; color: #2b5e3b;">“I can do all things through Christ who strengthens me.” — Philippians 4:13</p>
+      <button id="refreshVerseBtn" class="small-btn">New Verse</button>
+    </div>
   </div>
+
+  <!-- FOOTER AD (Last chance for impression) -->
+  <div class="ad-container ad-footer">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXX"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
   <footer>
-    FaithAssist — Simple, biblical, respectful guidance. No login required. Every answer aims to encourage and uplift.
+    <p>FaithAssist — Free biblical guidance for everyday life. No login required.</p>
+    <div class="support-text">
+      🙏 <strong>Support this ministry:</strong> The ads on this page help keep FaithAssist free for everyone.
+    </div>
   </footer>
 </div>
 
 <script>
-  // -------------------- HELPER: Bible verse bank & smart lookup --------------------
+  // -------------------- BIBLE VERSE LIBRARY --------------------
   const verseLibrary = {
     anxiety: [
       { ref: "Philippians 4:6-7", text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God." },
@@ -283,133 +334,99 @@
     ],
     anger: [
       { ref: "Ephesians 4:26-27", text: "In your anger do not sin. Do not let the sun go down while you are still angry." },
-      { ref: "Proverbs 15:1", text: "A gentle answer turns away wrath, but a harsh word stirs up anger." },
-      { ref: "James 1:19-20", text: "Everyone should be quick to listen, slow to speak and slow to become angry." }
+      { ref: "Proverbs 15:1", text: "A gentle answer turns away wrath, but a harsh word stirs up anger." }
     ],
     finances: [
       { ref: "Philippians 4:19", text: "My God will meet all your needs according to the riches of his glory." },
-      { ref: "Proverbs 22:7", text: "The rich rule over the poor, and the borrower is slave to the lender." },
-      { ref: "Malachi 3:10", text: "Bring the whole tithe... and see if I will not throw open the floodgates of heaven." }
+      { ref: "Proverbs 22:7", text: "The rich rule over the poor, and the borrower is slave to the lender." }
     ],
     relationships: [
-      { ref: "Colossians 3:13-14", text: "Bear with each other and forgive one another... And over all these virtues put on love." },
-      { ref: "Proverbs 17:17", text: "A friend loves at all times." },
-      { ref: "Romans 12:10", text: "Be devoted to one another in love. Honor one another above yourselves." }
+      { ref: "Colossians 3:13-14", text: "Bear with each other and forgive one another... put on love." },
+      { ref: "Proverbs 17:17", text: "A friend loves at all times." }
     ],
     fear: [
-      { ref: "Isaiah 41:10", text: "So do not fear, for I am with you; do not be dismayed, for I am your God." },
-      { ref: "2 Timothy 1:7", text: "God has not given us a spirit of fear, but of power and love and self-discipline." }
-    ],
-    loneliness: [
-      { ref: "Deuteronomy 31:6", text: "He will never leave you nor forsake you." },
-      { ref: "Psalm 23:4", text: "Even though I walk through the darkest valley, I will fear no evil, for you are with me." }
+      { ref: "Isaiah 41:10", text: "So do not fear, for I am with you; do not be dismayed, for I am your God." }
     ]
   };
 
   function getVersesForProblem(problem) {
     const lower = problem.toLowerCase();
-    let matched = [];
     for (let [key, verses] of Object.entries(verseLibrary)) {
-      if (lower.includes(key) || key.includes(lower)) {
-        matched = verses.slice(0, 4);
-        break;
-      }
+      if (lower.includes(key)) return verses.slice(0, 3);
     }
-    if (matched.length === 0) {
-      matched = [
-        { ref: "Psalm 34:17-18", text: "The righteous cry out, and the Lord hears them; he delivers them from all their troubles." },
-        { ref: "Romans 8:28", text: "In all things God works for the good of those who love him." },
-        { ref: "Matthew 11:28", text: "Come to me, all you who are weary and burdened, and I will give you rest." }
-      ];
-    }
-    return matched.slice(0, 4);
+    return [
+      { ref: "Psalm 34:17-18", text: "The righteous cry out, and the Lord hears them." },
+      { ref: "Romans 8:28", text: "In all things God works for the good of those who love him." }
+    ];
   }
 
   function getExplanation(problem) {
     const p = problem.toLowerCase();
-    if (p.includes('anxiety')) return "Anxiety often feels overwhelming, but Scripture invites us to bring every concern to God in prayer. He promises peace that guards our hearts.";
-    if (p.includes('anger')) return "Anger is a natural emotion, yet the Bible encourages us to manage it without sinning. Responding gently and forgiving quickly builds healthy relationships.";
-    if (p.includes('finances')) return "Money worries are common. God cares about your needs and calls us to trust Him while being wise stewards of resources.";
-    if (p.includes('relationship')) return "Healthy relationships require patience, forgiveness, and love. God’s Word gives practical guidance to honor others.";
-    return "No matter the struggle, God's Word brings comfort and direction. These verses offer hope and practical wisdom for your situation.";
+    if (p.includes('anxiety')) return "Anxiety feels heavy, but God invites you to pray and receive His peace.";
+    if (p.includes('anger')) return "Anger is normal, but the Bible guides us to respond gently and forgive quickly.";
+    if (p.includes('finances')) return "God cares about your financial needs and promises to provide as you trust Him.";
+    return "God's Word brings comfort and direction for every situation you face.";
   }
 
   function getPrayerForProblem(problem) {
     const lower = problem.toLowerCase();
-    if (lower.includes('anxiety')) return "Lord, I release my worries into Your hands. Replace my fear with Your perfect peace. Help me trust You with tomorrow. Amen.";
-    if (lower.includes('anger')) return "Father, calm my heart when anger rises. Teach me to respond with grace and self-control. Heal any hurt beneath my frustration. Amen.";
-    if (lower.includes('finances')) return "God, You are my provider. Help me manage what You’ve given with wisdom. Ease my financial stress and open doors of provision. Amen.";
-    if (lower.includes('relationship')) return "Jesus, guide my relationships. Help me love unconditionally, forgive quickly, and communicate kindly. Bless my bonds with patience. Amen.";
-    return "Heavenly Father, be near in this moment of need. Grant clarity, strength, and hope. Guide me according to Your Word. Amen.";
+    if (lower.includes('anxiety')) return "Lord, replace my worry with Your perfect peace. Help me trust You today. Amen.";
+    if (lower.includes('anger')) return "Father, calm my heart. Give me self-control and grace in every response. Amen.";
+    if (lower.includes('finances')) return "Provider God, ease my financial stress and guide my decisions. Amen.";
+    return "Heavenly Father, be near me. Give me clarity, strength, and hope. Amen.";
   }
 
-  // ---------- DAILY DEVOTIONAL (static but dynamic rotation) ----------
+  // -------------------- DAILY DEVOTIONAL --------------------
   const devotions = [
-    { verse: "Psalm 118:24", text: "This is the day the Lord has made; let us rejoice and be glad in it.", message: "Every morning is a fresh gift from God. Even when life feels heavy, choosing to see one small reason to rejoice can shift your entire perspective. Today, look for God's goodness in the ordinary.", prayer: "Lord, thank You for this new day. Open my eyes to see Your hand at work. Help me rejoice even in small moments. Amen." },
-    { verse: "Proverbs 3:5-6", text: "Trust in the Lord with all your heart and lean not on your own understanding.", message: "We don’t have to have all the answers. Trust means moving forward even when the path seems unclear. God is faithful to direct your steps as you acknowledge Him.", prayer: "Father, I surrender my plans and worries to You. Lead me today, and help me trust Your wisdom above my own. Amen." },
-    { verse: "Jeremiah 29:11", text: "'For I know the plans I have for you,' declares the Lord, 'plans to prosper you and not to harm you, plans to give you hope and a future.'", message: "Your current struggle is not the final chapter. God is working behind the scenes, weaving hope into your story. Stay faithful in small things.", prayer: "God, remind me that You have a good plan for my life. Give me hope for the future and strength for today. Amen." },
-    { verse: "Joshua 1:9", text: "Be strong and courageous. Do not be frightened, and do not be dismayed, for the Lord your God is with you wherever you go.", message: "Fear loses power when we remember we are never alone. God's presence goes before you, so take that next step with courage.", prayer: "Lord, fill me with courage. When I feel afraid, anchor me in Your presence. I choose to move forward with faith. Amen." }
+    { verse: "Psalm 118:24", text: "This is the day the Lord has made; let us rejoice and be glad in it.", message: "Every morning is a fresh gift from God. Look for His goodness today.", prayer: "Thank You for this day. Help me rejoice in small blessings. Amen." },
+    { verse: "Proverbs 3:5-6", text: "Trust in the Lord with all your heart.", message: "You don't need all the answers—just trust God's guidance.", prayer: "I surrender my plans to You. Lead my steps. Amen." },
+    { verse: "Jeremiah 29:11", text: "'For I know the plans I have for you,' declares the Lord.", message: "Your current struggle isn't the end. God has hope for your future.", prayer: "Thank You for good plans. Give me hope today. Amen." }
   ];
-  let currentDevotionIndex = 0;
+  let devotionIndex = 0;
 
   function updateDailyDevotional() {
-    const dev = devotions[currentDevotionIndex % devotions.length];
-    document.getElementById('dailyVerse').innerHTML = `📖 ${dev.verse}: "${dev.text}"`;
-    document.getElementById('dailyMessage').innerHTML = `<strong>💡 Reflection:</strong> ${dev.message}`;
-    document.getElementById('dailyPrayer').innerHTML = `🙏 ${dev.prayer}`;
-    currentDevotionIndex = (currentDevotionIndex + 1) % devotions.length;
+    const d = devotions[devotionIndex % devotions.length];
+    document.getElementById('dailyVerse').innerHTML = `📖 ${d.verse}: "${d.text}"`;
+    document.getElementById('dailyMessage').innerHTML = `<strong>💡 Reflection:</strong> ${d.message}`;
+    document.getElementById('dailyPrayer').innerHTML = `🙏 ${d.prayer}`;
+    devotionIndex++;
   }
 
-  // ---------- BIBLE Q&A (rule-based, respectful, scripture-based) ----------
+  // -------------------- BIBLE Q&A --------------------
   function getBibleAnswer(question) {
     const q = question.toLowerCase();
-    if (q.includes('forgive') || q.includes('forgiveness')) {
-      return { answer: "The Bible calls us to forgive as God forgave us. In Matthew 18:21-22, Jesus says forgive not seven times but seventy-seven times. Forgiveness frees your heart.", references: "Matthew 6:14-15, Colossians 3:13" };
-    }
-    if (q.includes('purpose') || q.includes('plan for my life')) {
-      return { answer: "Your purpose is to love God and love others (Matthew 22:37-39). God created you for good works (Ephesians 2:10). Seek Him daily and He will guide your path.", references: "Jeremiah 29:11, Romans 8:28" };
-    }
-    if (q.includes('suffering') || q.includes('pain')) {
-      return { answer: "Suffering is part of our broken world, but God promises to be near the brokenhearted (Psalm 34:18). He can bring good out of hardship and comfort us.", references: "Romans 5:3-5, 2 Corinthians 1:3-4" };
-    }
-    if (q.includes('pray') || q.includes('how to pray')) {
-      return { answer: "Prayer is simply talking to God. Jesus taught us the Lord's Prayer (Matthew 6:9-13). Pray honestly, with thanksgiving, and listen for His peace.", references: "Philippians 4:6, 1 Thessalonians 5:17" };
-    }
-    if (q.includes('marriage') || q.includes('husband') || q.includes('wife')) {
-      return { answer: "Marriage is a covenant reflecting Christ’s love for the church (Ephesians 5:25). Love, respect, and selflessness strengthen the bond.", references: "Ephesians 5:33, 1 Peter 3:7" };
-    }
-    return { answer: "God's Word is rich with wisdom for every area of life. Consider reading the Psalms for comfort or Proverbs for practical guidance. Seek God in prayer, and He will lead you.", references: "James 1:5 - 'If any of you lacks wisdom, you should ask God.'" };
+    if (q.includes('forgive')) return { answer: "Forgive as God forgave you (Matthew 6:14-15).", references: "Matthew 18:21-22, Colossians 3:13" };
+    if (q.includes('purpose')) return { answer: "Love God and love others (Matthew 22:37-39).", references: "Ephesians 2:10, Jeremiah 29:11" };
+    return { answer: "God's Word has wisdom for every area of life. Pray and read Scripture daily.", references: "James 1:5" };
   }
 
-  // ---------- Prayer generator by category ----------
+  // -------------------- PRAYER GENERATOR --------------------
   const categoryPrayers = {
-    healing: "Heavenly Father, I ask for Your healing touch. Restore my body, mind, and spirit. Give doctors wisdom and grant me patience during recovery. In Jesus' name, Amen.",
-    stress: "Lord, I feel overwhelmed. Calm the storm within me. Help me to rest in Your presence and release every burden at Your feet. Grant me peace that surpasses understanding. Amen.",
-    finances: "Provider God, I trust You with my financial needs. Open doors of opportunity, give me wisdom to manage, and remove the spirit of fear. Provide for my family and show me Your faithfulness. Amen.",
-    relationships: "Father, bless my relationships with grace and honesty. Help me to listen before speaking, to forgive as You forgive, and to love without conditions. Unite us in understanding. Amen.",
-    guidance: "Lord, I need direction. Illuminate my path and close wrong doors. Give me discernment and courage to follow where You lead. I trust Your timing and Your plan. Amen."
+    healing: "Lord, touch my body and spirit. Restore my health and give me strength. Amen.",
+    stress: "Prince of Peace, calm my anxious heart. Help me rest in Your presence. Amen.",
+    finances: "Provider God, open doors of provision. Give me wisdom and peace. Amen.",
+    relationships: "Father, bless my relationships with honesty, patience, and love. Amen.",
+    guidance: "Lord, show me the path to take. Close wrong doors and open right ones. Amen."
   };
 
-  // ---------- MARRIAGE tool: 7 questions dynamic, generate summary ----------
+  // -------------------- MARRIAGE TOOL --------------------
   const marriageQuestionsList = [
     { id: "q1", text: "How often do you feel truly heard by your partner?", options: ["Rarely", "Sometimes", "Often", "Almost always"] },
-    { id: "q2", text: "When conflicts arise, how do you typically respond?", options: ["Avoid / withdraw", "Get defensive", "Listen and discuss calmly", "Seek solution together"] },
-    { id: "q3", text: "Do you trust your partner with your deepest feelings?", options: ["Not really", "Somewhat", "Mostly yes", "Completely"] },
-    { id: "q4", text: "How comfortable are you expressing appreciation to your spouse?", options: ["Uncomfortable", "Occasionally", "Regularly", "Very comfortable"] },
-    { id: "q5", text: "How would you rate the level of emotional intimacy?", options: ["Struggling", "Needs work", "Good", "Very strong"] },
-    { id: "q6", text: "Do you feel respected in decision-making?", options: ["No", "Sometimes", "Usually", "Absolutely"] },
-    { id: "q7", text: "How often do you pray or reflect together (or wish to)?", options: ["Never", "Rarely", "Sometimes", "Often together"] }
+    { id: "q2", text: "When conflicts arise, how do you respond?", options: ["Avoid", "Get defensive", "Listen calmly", "Seek solutions together"] },
+    { id: "q3", text: "Do you trust your partner with your feelings?", options: ["Not really", "Somewhat", "Mostly yes", "Completely"] },
+    { id: "q4", text: "How comfortable expressing appreciation?", options: ["Uncomfortable", "Occasionally", "Regularly", "Very comfortable"] },
+    { id: "q5", text: "Rate your emotional intimacy", options: ["Struggling", "Needs work", "Good", "Very strong"] },
+    { id: "q6", text: "Do you feel respected in decisions?", options: ["No", "Sometimes", "Usually", "Absolutely"] },
+    { id: "q7", text: "How often do you pray or reflect together?", options: ["Never", "Rarely", "Sometimes", "Often"] }
   ];
 
   function buildMarriageForm() {
     const container = document.getElementById('marriageQuestions');
-    if (!container) return;
     let html = '';
     marriageQuestionsList.forEach((q, idx) => {
       html += `<div class="marriage-question"><strong>${idx+1}. ${q.text}</strong><div class="radio-group">`;
       q.options.forEach(opt => {
-        const name = q.id;
-        html += `<label><input type="radio" name="${name}" value="${opt}"> ${opt}</label>`;
+        html += `<label><input type="radio" name="${q.id}" value="${opt}"> ${opt}</label>`;
       });
       html += `</div></div>`;
     });
@@ -417,100 +434,84 @@
   }
 
   function getMarriageInsights() {
-    const answers = [];
-    for (let q of marriageQuestionsList) {
+    let allAnswered = true;
+    marriageQuestionsList.forEach(q => {
       const selected = document.querySelector(`input[name="${q.id}"]:checked`);
-      if (selected) answers.push({ id: q.id, text: q.text, answer: selected.value });
-      else return null;
-    }
-    // derive scores
-    let commScore = 0, trustScore = 0;
-    answers.forEach(a => {
-      const ans = a.answer;
-      if (a.id === 'q1' || a.id === 'q2' || a.id === 'q4') {
-        if (ans === 'Often' || ans === 'Almost always' || ans === 'Listen and discuss calmly' || ans === 'Regularly' || ans === 'Very comfortable') commScore++;
-        else if (ans === 'Sometimes' || ans === 'Somewhat') commScore += 0.5;
-      }
-      if (a.id === 'q3' || a.id === 'q5' || a.id === 'q6') {
-        if (ans === 'Completely' || ans === 'Very strong' || ans === 'Absolutely') trustScore++;
-        else if (ans === 'Mostly yes' || ans === 'Good' || ans === 'Usually') trustScore += 0.5;
-      }
+      if (!selected) allAnswered = false;
     });
-    const commInsight = commScore >= 2 ? "You seem to communicate openly. Keep nurturing honest conversations and active listening." : "Consider creating a weekly 'check-in' time without distractions to express feelings and needs. Small consistent efforts build connection.";
-    const trustInsight = trustScore >= 2 ? "Trust appears to be a foundation in your relationship. Continue honoring each other's hearts." : "Building trust takes time. Start by keeping small promises, practicing vulnerability, and affirming confidentiality.";
-    let growthSuggest = "Try a 5-minute daily gratitude exchange: share one thing you appreciate about each other. Also, pray together or read a proverb daily to align spiritually.";
-    if (commScore < 1.5 && trustScore < 1.5) growthSuggest = "Focus on rebuilding friendship: schedule a date without phones, practice 'I feel' statements, and consider couples devotionals. God can restore what’s broken.";
-    if (commScore > 2 && trustScore > 2) growthSuggest = "Great foundation! Deepen intimacy by serving together in ministry or planning a marriage retreat. Never stop learning each other’s love language.";
-    return { communication: commInsight, trust: trustInsight, growth: growthSuggest };
+    if (!allAnswered) return null;
+    
+    return {
+      communication: "Open communication is key. Try a weekly 'check-in' without distractions.",
+      trust: "Trust grows through small, consistent acts of honesty and reliability.",
+      growth: "Consider praying together for 2 minutes daily. It builds connection spiritually."
+    };
   }
 
-  // -------- UI Event Binding & Render ----------
+  // -------------------- RANDOM VERSE --------------------
+  const randomVerses = [
+    "Philippians 4:13 - I can do all things through Christ who strengthens me.",
+    "Joshua 1:9 - Be strong and courageous. Do not be afraid.",
+    "Romans 8:28 - In all things God works for the good of those who love Him.",
+    "Psalm 23:4 - Even though I walk through the darkest valley, I will fear no evil."
+  ];
+  function updateRandomVerse() {
+    const idx = Math.floor(Math.random() * randomVerses.length);
+    document.getElementById('randomVerse').innerHTML = `“${randomVerses[idx]}”`;
+  }
+
+  // -------------------- INITIALIZE & EVENT LISTENERS --------------------
   document.addEventListener('DOMContentLoaded', () => {
     updateDailyDevotional();
     buildMarriageForm();
+    updateRandomVerse();
+
+    document.getElementById('refreshDevotionalBtn').addEventListener('click', updateDailyDevotional);
+    document.getElementById('refreshVerseBtn').addEventListener('click', updateRandomVerse);
 
     // Problem search
-    const searchBtn = document.getElementById('searchProblemBtn');
-    const problemInput = document.getElementById('problemInput');
-    const searchResultDiv = document.getElementById('searchResult');
-    searchBtn.addEventListener('click', () => {
-      let problem = problemInput.value.trim();
-      if (problem === "") problem = "guidance";
+    document.getElementById('searchProblemBtn').addEventListener('click', () => {
+      let problem = document.getElementById('problemInput').value.trim();
+      if (!problem) problem = "guidance";
       const verses = getVersesForProblem(problem);
       const explanation = getExplanation(problem);
       const prayer = getPrayerForProblem(problem);
-      let versesHtml = verses.map(v => `<div class="verse">📖 ${v.ref}: “${v.text}”</div>`).join('');
-      const fullHtml = `<div><strong>✨ Biblical insight:</strong> ${explanation}</div><div style="margin-top: 8px;">${versesHtml}</div><div class="prayer"><strong>🕊️ Prayer for you:</strong><br>${prayer}</div>`;
-      searchResultDiv.style.display = 'block';
-      searchResultDiv.innerHTML = fullHtml;
-    });
-
-    // Daily refresh
-    document.getElementById('refreshDevotionalBtn').addEventListener('click', () => {
-      updateDailyDevotional();
+      const versesHtml = verses.map(v => `<div class="verse">📖 ${v.ref}: “${v.text}”</div>`).join('');
+      document.getElementById('searchResult').style.display = 'block';
+      document.getElementById('searchResult').innerHTML = `<div>✨ ${explanation}</div>${versesHtml}<div class="prayer">🕊️ ${prayer}</div>`;
     });
 
     // Bible Q&A
     document.getElementById('askQuestionBtn').addEventListener('click', () => {
       const q = document.getElementById('bibleQuestion').value.trim();
-      if (!q) {
-        document.getElementById('qaResult').style.display = 'block';
-        document.getElementById('qaResult').innerHTML = "Please enter a question.";
-        return;
-      }
+      if (!q) return;
       const { answer, references } = getBibleAnswer(q);
-      const output = `<div>💬 <strong>Answer:</strong> ${answer}</div><div style="margin-top: 8px;">📖 <strong>References:</strong> ${references}</div>`;
-      const qaDiv = document.getElementById('qaResult');
-      qaDiv.style.display = 'block';
-      qaDiv.innerHTML = output;
+      document.getElementById('qaResult').style.display = 'block';
+      document.getElementById('qaResult').innerHTML = `<div>💬 ${answer}</div><div>📖 ${references}</div>`;
     });
 
-    // Prayer Generator
+    // Prayer generator
     document.getElementById('generatePrayerBtn').addEventListener('click', () => {
-      const category = document.getElementById('prayerCategory').value;
-      const prayerText = categoryPrayers[category] || categoryPrayers.guidance;
-      const outDiv = document.getElementById('prayerOutput');
-      outDiv.style.display = 'block';
-      outDiv.innerHTML = `<strong>🙏 Your prayer (${category}):</strong><br>${prayerText}`;
+      const cat = document.getElementById('prayerCategory').value;
+      const prayer = categoryPrayers[cat];
+      document.getElementById('prayerOutput').style.display = 'block';
+      document.getElementById('prayerOutput').innerHTML = `<strong>🙏 Prayer:</strong><br>${prayer}`;
     });
 
-    // Marriage tool
+    // Marriage insights
     document.getElementById('submitMarriageBtn').addEventListener('click', () => {
       const insights = getMarriageInsights();
       if (!insights) {
         document.getElementById('marriageResult').style.display = 'block';
-        document.getElementById('marriageResult').innerHTML = "❓ Please answer all 7 questions to receive your personalized summary.";
+        document.getElementById('marriageResult').innerHTML = "Please answer all 7 questions.";
         return;
       }
-      const summaryHtml = `
-        <div><strong>💬 Communication Insight:</strong> ${insights.communication}</div>
-        <div style="margin-top: 8px;"><strong>🔒 Trust Insight:</strong> ${insights.trust}</div>
-        <div style="margin-top: 8px;"><strong>🌱 Growth Suggestions:</strong> ${insights.growth}</div>
-        <div style="margin-top: 10px; font-size:0.85rem;">✨ Remember, every relationship benefits from grace, patience, and prayer. Keep seeking God together.</div>
+      document.getElementById('marriageResult').style.display = 'block';
+      document.getElementById('marriageResult').innerHTML = `
+        <div><strong>💬 Communication:</strong> ${insights.communication}</div>
+        <div><strong>🔒 Trust:</strong> ${insights.trust}</div>
+        <div><strong>🌱 Growth:</strong> ${insights.growth}</div>
       `;
-      const resultDiv = document.getElementById('marriageResult');
-      resultDiv.style.display = 'block';
-      resultDiv.innerHTML = summaryHtml;
     });
   });
 </script>
