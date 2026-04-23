@@ -7,7 +7,6 @@
   <meta name="keywords" content="bible verses, christian prayer, daily devotional, biblical guidance">
   <meta name="author" content="FaithAssist">
   
-  <!-- Open Graph -->
   <meta property="og:title" content="FaithAssist | Biblical Guidance">
   <meta property="og:description" content="Free biblical guidance and prayers for real life.">
   <meta property="og:type" content="website">
@@ -15,7 +14,6 @@
   
   <title>FaithAssist | Biblical Guidance & Prayer</title>
   
-  <!-- Google AdSense (Replace with your ID) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX" crossorigin="anonymous"></script>
   
   <link rel="stylesheet" href="css/style.css">
@@ -24,7 +22,12 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">✝️ FaithAssist</a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      
+      <div style="display: flex; gap: 0.75rem; align-items: center;">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Dark mode">🌙</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">☰</button>
+      </div>
+      
       <ul class="nav-menu" id="navMenu">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="blog/index.html">Blog</a></li>
@@ -35,20 +38,17 @@
   </nav>
 
   <main class="container">
-    <!-- Hero -->
     <div class="hero">
       <h1>Find peace through <span class="highlight">Scripture</span></h1>
       <p>Free biblical guidance, prayers, and encouragement</p>
     </div>
 
-    <!-- Top Ad -->
     <div class="ad-container">
       <div class="ad-label">Advertisement</div>
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="auto"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <!-- Main Tool - Search -->
     <div class="main-tool">
       <div class="card">
         <h2>🔍 What's on your mind?</h2>
@@ -59,7 +59,6 @@
       </div>
     </div>
 
-    <!-- Tool Icons -->
     <div class="tool-icons">
       <button class="tool-icon" data-tool="devotional">🌄 Devotional</button>
       <button class="tool-icon" data-tool="qa">📖 Bible Q&A</button>
@@ -68,7 +67,6 @@
       <button class="tool-icon" data-tool="verse">📜 Verse</button>
     </div>
 
-    <!-- Expandable Panels -->
     <div id="devotionalPanel" class="tool-panel">
       <div class="card">
         <h2>🌄 Daily Devotional</h2>
@@ -135,19 +133,16 @@
       </div>
     </div>
 
-    <!-- Daily Inspiration Banner -->
     <div class="daily-banner">
       <div class="verse-text" id="dailyInspiration">✨ Let the peace of Christ rule in your hearts. — Colossians 3:15</div>
     </div>
 
-    <!-- Bottom Ad -->
     <div class="ad-container">
       <div class="ad-label">Advertisement</div>
       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="auto"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <!-- Support -->
     <div class="support-box">
       <p style="font-size: 0.8rem;">🙏 FaithAssist is completely free — <a href="https://buymeacoffee.com/yourusername" target="_blank" style="color: var(--primary);">support our mission</a></p>
     </div>
@@ -178,5 +173,47 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+      darkModeToggle.textContent = '☀️';
+    }
+    
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isNowDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isNowDark);
+      darkModeToggle.textContent = isNowDark ? '☀️' : '🌙';
+    });
+    
+    // Mobile Menu Toggle - FIXED
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (mobileBtn) {
+      mobileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navMenu.classList.toggle('active');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+          navMenu.classList.remove('active');
+        }
+      });
+      
+      // Close menu when clicking a link
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+        });
+      });
+    }
+  </script>
 </body>
 </html>

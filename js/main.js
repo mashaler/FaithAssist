@@ -1,8 +1,38 @@
-// FaithAssist - Complete JavaScript
+// FaithAssist - Complete JavaScript with Global Dark Mode
 // ==========================================
 
-// Toast notification
-function showToast(message) {
+// ========== GLOBAL DARK MODE (Works on ALL pages) ==========
+function initDarkMode() {
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (!darkModeToggle) return;
+    
+    // Check for saved preference
+    const savedMode = localStorage.getItem('darkMode');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Apply dark mode if saved or system preference
+    if (savedMode === 'true' || (savedMode === null && prefersDark)) {
+      document.body.classList.add('dark-mode');
+      darkModeToggle.textContent = '☀️';
+    } else {
+      document.body.classList.remove('dark-mode');
+      darkModeToggle.textContent = '🌙';
+    }
+    
+    // Toggle dark mode on click
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDark);
+      darkModeToggle.textContent = isDark ? '☀️' : '🌙';
+      
+      // Show toast notification
+      showToast(isDark ? '🌙 Dark mode enabled' : '☀️ Light mode enabled');
+    });
+  }
+  
+  // Toast notification
+  function showToast(message) {
     const existing = document.querySelector('.toast');
     if (existing) existing.remove();
     const toast = document.createElement('div');
@@ -12,15 +42,42 @@ function showToast(message) {
     setTimeout(() => toast.remove(), 2000);
   }
   
+  // ========== MOBILE MENU (Works on ALL pages) ==========
+  function initMobileMenu() {
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (!mobileBtn || !navMenu) return;
+    
+    mobileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+    
+    // Close menu when clicking a link
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  }
+  
   // ========== BIBLE VERSE DATABASE ==========
   const verseLibrary = {
     anxiety: [
       { ref: "Philippians 4:6-7", text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus." },
       { ref: "1 Peter 5:7", text: "Cast all your anxiety on him because he cares for you." },
-      { ref: "Matthew 6:34", text: "Therefore do not worry about tomorrow, for tomorrow will worry about itself. Each day has enough trouble of its own." }
+      { ref: "Matthew 6:34", text: "Therefore do not worry about tomorrow, for tomorrow will worry about itself." }
     ],
     anger: [
-      { ref: "Ephesians 4:26-27", text: "In your anger do not sin. Do not let the sun go down while you are still angry, and do not give the devil a foothold." },
+      { ref: "Ephesians 4:26-27", text: "In your anger do not sin. Do not let the sun go down while you are still angry." },
       { ref: "Proverbs 15:1", text: "A gentle answer turns away wrath, but a harsh word stirs up anger." },
       { ref: "James 1:19-20", text: "Everyone should be quick to listen, slow to speak and slow to become angry." }
     ],
@@ -70,9 +127,12 @@ function showToast(message) {
   
   function updateDevotional() {
     const d = devotions[devotionIndex % devotions.length];
-    document.getElementById('dailyVerse').innerHTML = `📖 ${d.verse}: "${d.text}"`;
-    document.getElementById('dailyMessage').innerHTML = `<strong>💡 Reflection:</strong> ${d.message}`;
-    document.getElementById('dailyPrayer').innerHTML = `🙏 ${d.prayer}`;
+    const verseEl = document.getElementById('dailyVerse');
+    const messageEl = document.getElementById('dailyMessage');
+    const prayerEl = document.getElementById('dailyPrayer');
+    if (verseEl) verseEl.innerHTML = `📖 ${d.verse}: "${d.text}"`;
+    if (messageEl) messageEl.innerHTML = `<strong>💡 Reflection:</strong> ${d.message}`;
+    if (prayerEl) prayerEl.innerHTML = `🙏 ${d.prayer}`;
     devotionIndex++;
   }
   
@@ -96,7 +156,7 @@ function showToast(message) {
     guidance: "Lord, I need direction. Illuminate my path and close wrong doors. Give me discernment and courage to follow where You lead. Amen."
   };
   
-  // ========== MARRIAGE TOOL (One at a time) ==========
+  // ========== MARRIAGE TOOL ==========
   const marriageQuestions = [
     { id: "q1", text: "How often do you feel truly heard by your partner?", options: ["Rarely", "Sometimes", "Often", "Almost always"] },
     { id: "q2", text: "When conflicts arise, how do you typically respond?", options: ["Avoid", "Get defensive", "Listen calmly", "Seek solutions together"] },
@@ -111,6 +171,9 @@ function showToast(message) {
   let marriageAnswers = {};
   
   function renderMarriageQuestion() {
+    const container = document.getElementById('marriageQuestionContainer');
+    if (!container) return;
+    
     const q = marriageQuestions[currentMarriageIndex];
     const saved = marriageAnswers[q.id] || '';
     let html = `<div class="marriage-question"><strong>${currentMarriageIndex + 1}. ${q.text}</strong><div class="radio-group">`;
@@ -118,7 +181,7 @@ function showToast(message) {
       html += `<label><input type="radio" name="marriageQ" value="${opt}" ${saved === opt ? 'checked' : ''}> ${opt}</label>`;
     });
     html += `</div></div>`;
-    document.getElementById('marriageQuestionContainer').innerHTML = html;
+    container.innerHTML = html;
     
     document.querySelectorAll('input[name="marriageQ"]').forEach(radio => {
       radio.addEventListener('change', (e) => {
@@ -130,16 +193,24 @@ function showToast(message) {
   }
   
   function updateMarriageProgress() {
-    const answered = Object.keys(marriageAnswers).length;
-    const percent = (answered / marriageQuestions.length) * 100;
-    document.getElementById('marriageProgress').style.width = percent + '%';
-    document.getElementById('marriageCounter').textContent = `Question ${currentMarriageIndex + 1} of ${marriageQuestions.length}`;
+    const progressBar = document.getElementById('marriageProgress');
+    const counter = document.getElementById('marriageCounter');
+    if (progressBar) {
+      const answered = Object.keys(marriageAnswers).length;
+      const percent = (answered / marriageQuestions.length) * 100;
+      progressBar.style.width = percent + '%';
+    }
+    if (counter) {
+      counter.textContent = `Question ${currentMarriageIndex + 1} of ${marriageQuestions.length}`;
+    }
   }
   
   function updateMarriageButtons() {
     const prevBtn = document.getElementById('prevQuestionBtn');
     const nextBtn = document.getElementById('nextQuestionBtn');
     const submitBtn = document.getElementById('submitMarriageBtn');
+    
+    if (!prevBtn || !nextBtn || !submitBtn) return;
     
     prevBtn.style.display = currentMarriageIndex === 0 ? 'none' : 'inline-flex';
     
@@ -177,6 +248,8 @@ function showToast(message) {
       return;
     }
     const resultDiv = document.getElementById('marriageResult');
+    if (!resultDiv) return;
+    
     resultDiv.innerHTML = `
       <div class="result-box">
         <strong>💬 Communication Insight:</strong><br>Healthy communication starts with listening. Try a 10-minute daily check-in.<br><br>
@@ -199,11 +272,14 @@ function showToast(message) {
   ];
   
   function updateRandomVerse() {
-    const idx = Math.floor(Math.random() * randomVerses.length);
-    document.getElementById('randomVerse').innerHTML = `“${randomVerses[idx]}”`;
+    const verseEl = document.getElementById('randomVerse');
+    if (verseEl) {
+      const idx = Math.floor(Math.random() * randomVerses.length);
+      verseEl.innerHTML = `“${randomVerses[idx]}”`;
+    }
   }
   
-  // ========== TOOL PANELS ==========
+  // ========== TOOL PANELS (Homepage only) ==========
   const panels = {
     devotional: document.getElementById('devotionalPanel'),
     qa: document.getElementById('qaPanel'),
@@ -228,28 +304,40 @@ function showToast(message) {
   
   // ========== INITIALIZE EVERYTHING ==========
   document.addEventListener('DOMContentLoaded', () => {
-    // Initialize devotional
-    updateDevotional();
+    // Initialize global features (works on ALL pages)
+    initDarkMode();
+    initMobileMenu();
     
-    // Initialize marriage tool
-    renderMarriageQuestion();
-    
-    // Initialize random verse
+    // Initialize random verse (if element exists)
     updateRandomVerse();
     
-    // ===== EVENT LISTENERS =====
+    // Homepage-specific initializations
+    if (document.getElementById('dailyVerse')) {
+      updateDevotional();
+    }
+    
+    if (document.getElementById('marriageQuestionContainer')) {
+      renderMarriageQuestion();
+    }
+    
+    // ===== HOMEPAGE EVENT LISTENERS =====
     
     // Search
-    document.getElementById('searchBtn')?.addEventListener('click', () => {
-      let problem = document.getElementById('problemInput').value.trim();
-      if (!problem) problem = "guidance";
-      const verses = getVerses(problem);
-      const prayer = getPrayer(problem);
-      const versesHtml = verses.map(v => `<div class="verse">📖 ${v.ref}: “${v.text}”</div>`).join('');
-      const resultDiv = document.getElementById('searchResult');
-      resultDiv.innerHTML = `<div class="result-box">${versesHtml}<div class="prayer-box">🕊️ ${prayer}</div></div>`;
-      resultDiv.style.display = 'block';
-    });
+    const searchBtn = document.getElementById('searchBtn');
+    if (searchBtn) {
+      searchBtn.addEventListener('click', () => {
+        let problem = document.getElementById('problemInput')?.value.trim();
+        if (!problem) problem = "guidance";
+        const verses = getVerses(problem);
+        const prayer = getPrayer(problem);
+        const versesHtml = verses.map(v => `<div class="verse">📖 ${v.ref}: “${v.text}”</div>`).join('');
+        const resultDiv = document.getElementById('searchResult');
+        if (resultDiv) {
+          resultDiv.innerHTML = `<div class="result-box">${versesHtml}<div class="prayer-box">🕊️ ${prayer}</div></div>`;
+          resultDiv.style.display = 'block';
+        }
+      });
+    }
     
     // Tool icons
     document.querySelectorAll('.tool-icon').forEach(icon => {
@@ -260,48 +348,65 @@ function showToast(message) {
     });
     
     // Devotional
-    document.getElementById('refreshDevotional')?.addEventListener('click', updateDevotional);
-    document.getElementById('shareDevotionalBtn')?.addEventListener('click', () => {
-      const verse = document.getElementById('dailyVerse')?.innerText || '';
-      const message = document.getElementById('dailyMessage')?.innerText || '';
-      window.open(`https://wa.me/?text=${encodeURIComponent(verse + '\n\n' + message + '\n\n— From FaithAssist')}`, '_blank');
-    });
+    const refreshBtn = document.getElementById('refreshDevotional');
+    if (refreshBtn) refreshBtn.addEventListener('click', updateDevotional);
+    
+    const shareDevotionalBtn = document.getElementById('shareDevotionalBtn');
+    if (shareDevotionalBtn) {
+      shareDevotionalBtn.addEventListener('click', () => {
+        const verse = document.getElementById('dailyVerse')?.innerText || '';
+        const message = document.getElementById('dailyMessage')?.innerText || '';
+        window.open(`https://wa.me/?text=${encodeURIComponent(verse + '\n\n' + message + '\n\n— From FaithAssist')}`, '_blank');
+      });
+    }
     
     // Bible Q&A
-    document.getElementById('askBtn')?.addEventListener('click', () => {
-      const q = document.getElementById('bibleQuestion').value.trim();
-      if (!q) { showToast('Please enter a question'); return; }
-      const { answer, references } = getBibleAnswer(q);
-      const resultDiv = document.getElementById('qaResult');
-      resultDiv.innerHTML = `<div class="result-box">💬 ${answer}<br><br>📖 ${references}</div>`;
-      resultDiv.style.display = 'block';
-    });
+    const askBtn = document.getElementById('askBtn');
+    if (askBtn) {
+      askBtn.addEventListener('click', () => {
+        const q = document.getElementById('bibleQuestion')?.value.trim();
+        if (!q) { showToast('Please enter a question'); return; }
+        const { answer, references } = getBibleAnswer(q);
+        const resultDiv = document.getElementById('qaResult');
+        if (resultDiv) {
+          resultDiv.innerHTML = `<div class="result-box">💬 ${answer}<br><br>📖 ${references}</div>`;
+          resultDiv.style.display = 'block';
+        }
+      });
+    }
     
     // Prayer Generator
-    document.getElementById('generatePrayerBtn')?.addEventListener('click', () => {
-      const cat = document.getElementById('prayerCategory').value;
-      const prayer = categoryPrayers[cat];
-      const outputDiv = document.getElementById('prayerOutput');
-      outputDiv.innerHTML = `<div class="result-box">🙏 ${prayer}</div>`;
-      outputDiv.style.display = 'block';
-    });
+    const generateBtn = document.getElementById('generatePrayerBtn');
+    if (generateBtn) {
+      generateBtn.addEventListener('click', () => {
+        const cat = document.getElementById('prayerCategory')?.value;
+        const prayer = categoryPrayers[cat || 'guidance'];
+        const outputDiv = document.getElementById('prayerOutput');
+        if (outputDiv) {
+          outputDiv.innerHTML = `<div class="result-box">🙏 ${prayer}</div>`;
+          outputDiv.style.display = 'block';
+        }
+      });
+    }
     
     // Marriage navigation
-    document.getElementById('nextQuestionBtn')?.addEventListener('click', nextMarriageQuestion);
-    document.getElementById('prevQuestionBtn')?.addEventListener('click', prevMarriageQuestion);
-    document.getElementById('submitMarriageBtn')?.addEventListener('click', showMarriageResults);
+    const nextBtn = document.getElementById('nextQuestionBtn');
+    const prevBtn = document.getElementById('prevQuestionBtn');
+    const submitBtn = document.getElementById('submitMarriageBtn');
+    
+    if (nextBtn) nextBtn.addEventListener('click', nextMarriageQuestion);
+    if (prevBtn) prevBtn.addEventListener('click', prevMarriageQuestion);
+    if (submitBtn) submitBtn.addEventListener('click', showMarriageResults);
     
     // Verse of the Day
-    document.getElementById('newVerseBtn')?.addEventListener('click', updateRandomVerse);
-    document.getElementById('shareVerseBtn')?.addEventListener('click', () => {
-      const verse = document.getElementById('randomVerse')?.innerText || '';
-      window.open(`https://wa.me/?text=${encodeURIComponent(verse + '\n\n— From FaithAssist')}`, '_blank');
-    });
+    const newVerseBtn = document.getElementById('newVerseBtn');
+    if (newVerseBtn) newVerseBtn.addEventListener('click', updateRandomVerse);
     
-    // Mobile menu
-    const mobileBtn = document.getElementById('mobileMenuBtn');
-    const navMenu = document.getElementById('navMenu');
-    if (mobileBtn) {
-      mobileBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
+    const shareVerseBtn = document.getElementById('shareVerseBtn');
+    if (shareVerseBtn) {
+      shareVerseBtn.addEventListener('click', () => {
+        const verse = document.getElementById('randomVerse')?.innerText || '';
+        window.open(`https://wa.me/?text=${encodeURIComponent(verse + '\n\n— From FaithAssist')}`, '_blank');
+      });
     }
   });
