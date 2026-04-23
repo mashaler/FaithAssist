@@ -1,22 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact FaithAssist</title><link rel="stylesheet" href="css/style.css"></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact FaithAssist - Send us your prayer requests, questions, or feedback. We'd love to hear from you.">
+  <meta name="keywords" content="contact faithassist, prayer request, feedback, christian help">
+  <meta property="og:title" content="Contact FaithAssist | Prayer Requests & Feedback">
+  <meta property="og:description" content="Send us your prayer requests, questions, or feedback.">
+  <title>Contact FaithAssist | Prayer Requests & Feedback</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
 <body>
-  <nav class="navbar">...</nav>
-  <main class="container">
-    <h1>Contact Us</h1>
-    <p>Have questions, prayer requests, or feedback? We'd love to hear from you.</p>
-    <div class="tool-card">
-      <h2>Send a Message</h2>
-      <form action="https://formsubmit.co/your-email@example.com" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required><br>
-        <input type="email" name="email" placeholder="Your Email" required><br>
-        <textarea name="message" rows="5" placeholder="Your message or prayer request..." required></textarea><br>
-        <button type="submit">Send Message →</button>
-      </form>
+  <!-- Navigation - Same as homepage -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">✝️ FaithAssist</a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
     </div>
-    <div class="support-box"><p>🙏 <strong>Prayer Request?</strong> We'd be honored to pray for you.</p></div>
+  </nav>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Contact <span class="highlight">FaithAssist</span></h1>
+      <p>We'd love to hear from you. Send us your prayer requests, questions, or feedback.</p>
+    </section>
+
+    <!-- Share Section -->
+    <div class="share-section">
+      <div class="share-title">📢 Share FaithAssist with someone who needs encouragement</div>
+      <div class="share-buttons">
+        <button class="share-btn share-whatsapp" id="shareWhatsapp">📱 WhatsApp</button>
+        <button class="share-btn share-facebook" id="shareFacebook">📘 Facebook</button>
+        <button class="share-btn share-twitter" id="shareTwitter">🐦 Twitter</button>
+        <button class="share-btn share-email" id="shareEmail">✉️ Email</button>
+        <button class="share-btn share-copy" id="shareCopy">📋 Copy Link</button>
+      </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="tools-grid" style="grid-template-columns: 1fr 1fr;">
+      <!-- Contact Form Card -->
+      <div class="tool-card">
+        <h2>📝 Send a Message</h2>
+        <p>Fill out the form below and we'll get back to you within 2-3 business days.</p>
+        
+        <!-- FormSubmit.co free form handling (replace with your email) -->
+        <form action="https://formsubmit.co/your-email@example.com" method="POST" style="margin-top: 1.5rem;">
+          <!-- Honeypot spam protection -->
+          <input type="text" name="_honey" style="display: none;">
+          <!-- Disable captcha (optional - remove if you want captcha) -->
+          <input type="hidden" name="_captcha" value="false">
+          <!-- Redirect after submit -->
+          <input type="hidden" name="_next" value="https://faithassist.com/thank-you.html">
+          
+          <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Your Name *</label>
+          <input type="text" id="name" name="name" required placeholder="John Doe">
+          
+          <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500; margin-top: 1rem;">Your Email *</label>
+          <input type="email" id="email" name="email" required placeholder="john@example.com">
+          
+          <label for="subject" style="display: block; margin-bottom: 0.5rem; font-weight: 500; margin-top: 1rem;">Subject *</label>
+          <select id="subject" name="subject" required style="border-radius: 2rem;">
+            <option value="">Select a subject...</option>
+            <option value="prayer-request">🙏 Prayer Request</option>
+            <option value="question">📖 Bible Question</option>
+            <option value="feedback">💬 Feedback / Suggestion</option>
+            <option value="support">🛟 Technical Support</option>
+            <option value="other">✉️ Other</option>
+          </select>
+          
+          <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 500; margin-top: 1rem;">Your Message *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Please share your prayer request, question, or feedback..."></textarea>
+          
+          <button type="submit" style="margin-top: 1.5rem;">✉️ Send Message →</button>
+        </form>
+        
+        <p style="font-size: 0.8rem; color: #6b5a4a; margin-top: 1rem; text-align: center;">
+          🔒 We respect your privacy. Your information will never be shared.
+        </p>
+      </div>
+
+      <!-- Prayer Request / Encouragement Card -->
+      <div class="tool-card">
+        <h2>🙏 Prayer Request</h2>
+        <p>Need prayer right now? You don't have to wait. We're praying for you.</p>
+        
+        <div style="background: #2b5e3b10; padding: 1.2rem; border-radius: 1rem; margin: 1rem 0;">
+          <p style="font-style: italic; color: #2b5e3b;">"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God."</p>
+          <p style="text-align: right; margin-top: 0.5rem;">— Philippians 4:6</p>
+        </div>
+        
+        <p><strong>You can also reach us directly:</strong></p>
+        <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+          <li>📧 <strong>Email:</strong> <a href="mailto:prayer@faithassist.com" style="color: #2b5e3b;">prayer@faithassist.com</a></li>
+          <li>📱 <strong>WhatsApp:</strong> <a href="#" id="whatsappLink" style="color: #2b5e3b;">+1 (555) 123-4567</a> (text only)</li>
+        </ul>
+        
+        <!-- Quick Prayer Button -->
+        <div class="affiliate-box" style="margin-top: 1rem;">
+          <strong>📖 Need immediate guidance?</strong><br>
+          <a href="index.html" style="color: #2b5e3b;">Use our Prayer Generator →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="popular-topics">
+      <h2>❓ Frequently Asked Questions</h2>
+      <div class="tools-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="tool-card" style="padding: 1rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Is FaithAssist really free?</h3>
+          <p style="font-size: 0.9rem;">Yes! All tools, devotionals, and articles are completely free. No login required, ever.</p>
+        </div>
+        <div class="tool-card" style="padding: 1rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">How do I get a prayer answered?</h3>
+          <p style="font-size: 0.9rem;">God answers every prayer — sometimes yes, sometimes not yet, sometimes differently. Keep praying!</p>
+        </div>
+        <div class="tool-card" style="padding: 1rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Can I share these articles?</h3>
+          <p style="font-size: 0.9rem;">Absolutely! Use the share buttons on any page. We encourage sharing God's Word.</p>
+        </div>
+        <div class="tool-card" style="padding: 1rem;">
+          <h3 style="font-size: 1rem; margin-bottom: 0.5rem;">Do you offer counseling?</h3>
+          <p style="font-size: 0.9rem;">We provide biblical guidance, not professional counseling. For serious issues, please see a licensed counselor.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Support Box -->
+    <div class="support-box">
+      <p>🙏 <strong>Support Our Mission</strong></p>
+      <p>FaithAssist is 100% free because of supporters like you.</p>
+      <a href="https://buymeacoffee.com/yourusername" target="_blank" class="coffee-btn">☕ Buy Me a Coffee</a>
+    </div>
   </main>
-  <footer>...</footer>
+
+  <!-- Footer - Same as homepage -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>✝️ FaithAssist</h4>
+        <p>Biblical guidance for real life — always free.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="blog/index.html">Blog</a>
+        <a href="about.html">About Us</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h4>Disclaimer</h4>
+        <p>For spiritual encouragement only. Not a substitute for professional counseling or medical advice.</p>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="#" id="footerShareFacebook">📘 Share on Facebook</a>
+      <a href="#" id="footerShareTwitter">🐦 Share on Twitter</a>
+      <a href="#" id="footerShareWhatsapp">📱 Share on WhatsApp</a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 FaithAssist. All content is free to share with attribution.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Sharing functions for contact page
+    const siteUrl = window.location.href;
+    
+    function showToast(message) {
+      const existingToast = document.querySelector('.toast-message');
+      if (existingToast) existingToast.remove();
+      
+      const toast = document.createElement('div');
+      toast.className = 'toast-message';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => toast.remove(), 2000);
+    }
+    
+    document.getElementById('shareWhatsapp')?.addEventListener('click', () => {
+      window.open(`https://wa.me/?text=FaithAssist%20-%20Free%20biblical%20guidance%20and%20prayers%0A%0A${encodeURIComponent(siteUrl)}`, '_blank');
+    });
+    
+    document.getElementById('shareFacebook')?.addEventListener('click', () => {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}`, '_blank', 'width=600,height=400');
+    });
+    
+    document.getElementById('shareTwitter')?.addEventListener('click', () => {
+      window.open(`https://twitter.com/intent/tweet?text=Find%20peace%20and%20biblical%20guidance%20at%20FaithAssist&url=${encodeURIComponent(siteUrl)}`, '_blank');
+    });
+    
+    document.getElementById('shareEmail')?.addEventListener('click', () => {
+      window.location.href = `mailto:?subject=FaithAssist%20-%20Biblical%20Guidance&body=I%20found%20this%20helpful%20resource%20for%20biblical%20guidance%20and%20prayer%3A%0A%0A${encodeURIComponent(siteUrl)}`;
+    });
+    
+    document.getElementById('shareCopy')?.addEventListener('click', () => {
+      navigator.clipboard.writeText(siteUrl);
+      showToast('📋 Link copied to clipboard!');
+    });
+    
+    // Footer social links
+    document.getElementById('footerShareFacebook')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}`, '_blank');
+    });
+    
+    document.getElementById('footerShareTwitter')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open(`https://twitter.com/intent/tweet?text=Find%20biblical%20guidance%20at%20FaithAssist&url=${encodeURIComponent(siteUrl)}`, '_blank');
+    });
+    
+    document.getElementById('footerShareWhatsapp')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open(`https://wa.me/?text=Check%20out%20FaithAssist%20for%20free%20biblical%20guidance%20and%20prayers%0A%0A${encodeURIComponent(siteUrl)}`, '_blank');
+    });
+    
+    // WhatsApp link (you can replace with your actual WhatsApp number)
+    document.getElementById('whatsappLink')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open('https://wa.me/15551234567?text=Hi%20FaithAssist%2C%20I%20have%20a%20question...', '_blank');
+    });
+    
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+    if (mobileBtn) {
+      mobileBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+    }
+  </script>
 </body>
 </html>
