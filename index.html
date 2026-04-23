@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="FaithAssist - Free biblical guidance, prayers, daily devotionals, and marriage advice. Find help for anxiety, anger, finances, and relationships.">
-  <meta name="keywords" content="bible verses, christian prayer, daily devotional, marriage advice, anxiety help, biblical guidance">
+  <meta name="description" content="FaithAssist - Find biblical guidance, prayers, and encouragement. Simple, free, and always here for you.">
+  <meta name="keywords" content="bible verses, christian prayer, daily devotional, biblical guidance">
   <meta name="author" content="FaithAssist">
   
-  <!-- Open Graph / Social Media Meta Tags -->
-  <meta property="og:title" content="FaithAssist | Biblical Guidance & Prayer Companion">
-  <meta property="og:description" content="Free tools to help you find peace, prayer, and practical wisdom from Scripture.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="FaithAssist | Biblical Guidance">
+  <meta property="og:description" content="Free biblical guidance and prayers for real life.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://faithassist.com">
   <meta name="twitter:card" content="summary_large_image">
   
-  <title>FaithAssist | Biblical Guidance & Prayer Companion</title>
+  <title>FaithAssist | Biblical Guidance & Prayer</title>
   
   <!-- Google AdSense (Replace with your ID) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXX" crossorigin="anonymous"></script>
   
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
@@ -37,477 +35,148 @@
   </nav>
 
   <main class="container">
-    <!-- Hero Section -->
-    <section class="hero">
-      <h1>Biblical Guidance <span class="highlight">for Real Life</span></h1>
-      <p>Free tools to help you find peace, prayer, and practical wisdom from Scripture.</p>
-    </section>
-
-    <!-- Share the Site Section -->
-    <div class="share-section">
-      <div class="share-title">📢 Share FaithAssist with someone who needs encouragement</div>
-      <div class="share-buttons">
-        <button class="share-btn share-whatsapp" id="shareSiteWhatsapp">📱 WhatsApp</button>
-        <button class="share-btn share-facebook" id="shareSiteFacebook">📘 Facebook</button>
-        <button class="share-btn share-twitter" id="shareSiteTwitter">🐦 Twitter</button>
-        <button class="share-btn share-email" id="shareSiteEmail">✉️ Email</button>
-        <button class="share-btn share-copy" id="shareSiteCopy">📋 Copy Link</button>
-      </div>
+    <!-- Hero -->
+    <div class="hero">
+      <h1>Find peace through <span class="highlight">Scripture</span></h1>
+      <p>Free biblical guidance, prayers, and encouragement</p>
     </div>
 
     <!-- Top Ad -->
     <div class="ad-container">
       <div class="ad-label">Advertisement</div>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="auto"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <!-- Tools Grid -->
-    <div class="tools-grid">
-      <!-- Tool 1: Problem Search -->
-      <div class="tool-card">
-        <h2>🔍 Find Biblical Help</h2>
-        <p>Enter any struggle — anxiety, anger, finances, loneliness</p>
-        <input type="text" id="problemInput" placeholder="e.g., fear, relationships, stress" autocomplete="off">
-        <button id="searchBtn">Get Verses & Prayer →</button>
-        <div id="searchResult" class="result-card" style="display: none;"></div>
+    <!-- Main Tool - Search -->
+    <div class="main-tool">
+      <div class="card">
+        <h2>🔍 What's on your mind?</h2>
+        <p>Anxiety, anger, finances, relationships — any struggle</p>
+        <input type="text" id="problemInput" placeholder="e.g., fear, loneliness, stress" autocomplete="off">
+        <button id="searchBtn">Find Bible Verses →</button>
+        <div id="searchResult" style="display: none;"></div>
       </div>
+    </div>
 
-      <!-- Tool 2: Daily Devotional -->
-      <div class="tool-card">
+    <!-- Tool Icons -->
+    <div class="tool-icons">
+      <button class="tool-icon" data-tool="devotional">🌄 Devotional</button>
+      <button class="tool-icon" data-tool="qa">📖 Bible Q&A</button>
+      <button class="tool-icon" data-tool="prayer">🙏 Prayer</button>
+      <button class="tool-icon" data-tool="marriage">💑 Marriage</button>
+      <button class="tool-icon" data-tool="verse">📜 Verse</button>
+    </div>
+
+    <!-- Expandable Panels -->
+    <div id="devotionalPanel" class="tool-panel">
+      <div class="card">
         <h2>🌄 Daily Devotional</h2>
         <div id="dailyVerse" class="verse">Loading...</div>
-        <div id="dailyMessage" class="devotional-message"></div>
-        <div id="dailyPrayer" class="prayer-card"></div>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <button id="refreshDevotional" class="btn-small">🔄 New Devotional</button>
-          <button id="shareDevotional" class="share-mini">📤 Share Devotional</button>
+        <div id="dailyMessage"></div>
+        <div id="dailyPrayer" class="prayer-box"></div>
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <button id="refreshDevotional" class="btn-small">New</button>
+          <button id="shareDevotionalBtn" class="btn-small btn-outline">Share</button>
         </div>
       </div>
+    </div>
 
-      <!-- Tool 3: Bible Q&A -->
-      <div class="tool-card">
+    <div id="qaPanel" class="tool-panel">
+      <div class="card">
         <h2>📖 Bible Q&A</h2>
-        <p>Ask any question about faith, life, or Scripture</p>
+        <p>Ask any question about faith</p>
         <input type="text" id="bibleQuestion" placeholder="e.g., What does the Bible say about forgiveness?">
         <button id="askBtn">Ask →</button>
-        <div id="qaResult" class="result-card" style="display: none;"></div>
+        <div id="qaResult" style="display: none;"></div>
       </div>
+    </div>
 
-      <!-- Tool 4: Prayer Generator -->
-      <div class="tool-card">
+    <div id="prayerPanel" class="tool-panel">
+      <div class="card">
         <h2>🙏 Prayer Generator</h2>
         <select id="prayerCategory">
-          <option value="healing">Healing & Recovery</option>
+          <option value="healing">Healing</option>
           <option value="stress">Stress & Anxiety</option>
-          <option value="finances">Finances & Provision</option>
+          <option value="finances">Finances</option>
           <option value="relationships">Relationships</option>
-          <option value="guidance">Guidance & Direction</option>
-          <option value="grief">Grief & Loss</option>
+          <option value="guidance">Guidance</option>
         </select>
         <button id="generatePrayerBtn">Generate Prayer →</button>
-        <div id="prayerOutput" class="result-card" style="display: none;"></div>
+        <div id="prayerOutput" style="display: none;"></div>
       </div>
+    </div>
 
-      <!-- Tool 5: Marriage Insight - ONE QUESTION AT A TIME -->
-      <div class="tool-card">
-        <h2>💑 Marriage & Relationship Insight</h2>
-        <p>Answer 7 simple questions for personalized guidance</p>
-        
-        <!-- Progress Bar -->
-        <div style="margin: 1rem 0;">
-          <div style="background: #e2d9cf; border-radius: 1rem; height: 6px; overflow: hidden;">
-            <div id="marriageProgress" style="width: 0%; background: #2b5e3b; height: 100%; transition: width 0.3s ease;"></div>
-          </div>
-          <div style="display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.7rem; color: #6b5a4a;">
-            <span>Question <span id="currentQNumber">1</span> of <span id="totalQCount">7</span></span>
-            <span id="progressPercent">0%</span>
-          </div>
+    <div id="marriagePanel" class="tool-panel">
+      <div class="card">
+        <h2>💑 Marriage Insight</h2>
+        <p>7 questions for personalized guidance</p>
+        <div class="progress-bar"><div class="progress-fill" id="marriageProgress"></div></div>
+        <div style="font-size: 0.7rem; margin: 0.5rem 0; text-align: right;" id="marriageCounter">Question 1 of 7</div>
+        <div id="marriageQuestionContainer"></div>
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <button id="prevQuestionBtn" class="btn-small" style="display: none;">← Previous</button>
+          <button id="nextQuestionBtn" class="btn-small">Next →</button>
+          <button id="submitMarriageBtn" class="btn-small" style="background: var(--accent); display: none;">Get Insights</button>
         </div>
-        
-        <!-- Current Question Container -->
-        <div id="marriageQuestionContainer" style="min-height: 180px;">
-          <!-- Dynamic question will appear here -->
-        </div>
-        
-        <!-- Navigation Buttons -->
-        <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
-          <button id="prevQuestionBtn" class="btn-small" style="width: auto; background: #e5dccc; color: #3a2c21; display: none;">← Previous</button>
-          <button id="nextQuestionBtn" class="btn-small" style="width: auto; background: #2b5e3b; color: white;">Next →</button>
-          <button id="submitMarriageBtn" style="width: auto; background: #b88b4a; display: none;">Get Insights →</button>
-        </div>
-        
-        <div id="marriageResult" class="result-card" style="display: none;"></div>
-        <div class="affiliate-box">
-          📚 <strong>Recommended for couples:</strong> 
-          <a href="https://amzn.to/your-affiliate-link" target="_blank" rel="sponsored">The 5 Love Languages</a> 
-          <small>(supports FaithAssist at no cost)</small>
-        </div>
+        <div id="marriageResult" style="display: none;"></div>
+        <div class="affiliate-box">📚 <a href="https://amzn.to/your-affiliate-link" target="_blank">The 5 Love Languages</a></div>
       </div>
+    </div>
 
-      <!-- Tool 6: Verse of the Moment -->
-      <div class="tool-card">
-        <h2>📜 Verse of the Moment</h2>
-        <div id="randomVerse" class="verse-large">“I can do all things through Christ who strengthens me.” — Philippians 4:13</div>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <button id="newVerseBtn" class="btn-small">New Verse →</button>
-          <button id="shareVerseBtn" class="share-mini">📤 Share Verse</button>
+    <div id="versePanel" class="tool-panel">
+      <div class="card">
+        <h2>📜 Verse of the Day</h2>
+        <div id="randomVerse" class="verse" style="text-align: center; font-size: 1.1rem;">“I can do all things through Christ who strengthens me.” — Philippians 4:13</div>
+        <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+          <button id="newVerseBtn" class="btn-small">New Verse</button>
+          <button id="shareVerseBtn" class="btn-small btn-outline">Share</button>
         </div>
       </div>
     </div>
 
-    <!-- Between Tools Ad -->
-    <div class="ad-container">
-      <div class="ad-label">Advertisement</div>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <!-- Daily Inspiration Banner -->
+    <div class="daily-banner">
+      <div class="verse-text" id="dailyInspiration">✨ Let the peace of Christ rule in your hearts. — Colossians 3:15</div>
     </div>
-
-    <!-- Popular Topics Section (SEO Gold) -->
-    <section class="popular-topics">
-      <h2>📖 Popular Biblical Topics</h2>
-      <div class="topics-grid">
-        <a href="blog/anxiety-verses.html" class="topic-card">😰 Anxiety & Worry</a>
-        <a href="blog/anger-management.html" class="topic-card">😤 Anger & Frustration</a>
-        <a href="blog/financial-peace.html" class="topic-card">💰 Financial Peace</a>
-        <a href="blog/forgiveness-bible.html" class="topic-card">🕊️ Forgiveness</a>
-        <a href="blog/marriage-prayer.html" class="topic-card">💒 Marriage Prayer</a>
-        <a href="blog/loneliness-help.html" class="topic-card">💔 Loneliness</a>
-        <a href="blog/grief-comfort.html" class="topic-card">🕯️ Grief & Loss</a>
-        <a href="blog/parenting-prayers.html" class="topic-card">👨‍👩‍👧 Parenting</a>
-        <a href="blog/fear-courage.html" class="topic-card">⚡ Fear & Courage</a>
-        <a href="blog/depression-hope.html" class="topic-card">🌤️ Depression & Hope</a>
-        <a href="blog/trusting-god.html" class="topic-card">🤲 Trusting God</a>
-        <a href="blog/peace-stress.html" class="topic-card">🕊️ Peace for Stress</a>
-      </div>
-    </section>
 
     <!-- Bottom Ad -->
     <div class="ad-container">
       <div class="ad-label">Advertisement</div>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXX" data-ad-slot="1234567890" data-ad-format="auto"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <!-- Support Box -->
+    <!-- Support -->
     <div class="support-box">
-      <p>🙏 <strong>FaithAssist is 100% free</strong> because everyone deserves guidance.</p>
-      <p>If this blessed you, consider supporting our mission:</p>
-      <a href="https://buymeacoffee.com/yourusername" target="_blank" class="coffee-btn">☕ Buy Me a Coffee</a>
+      <p style="font-size: 0.8rem;">🙏 FaithAssist is completely free — <a href="https://buymeacoffee.com/yourusername" target="_blank" style="color: var(--primary);">support our mission</a></p>
     </div>
   </main>
 
   <footer>
     <div class="footer-content">
       <div class="footer-section">
-        <h4>FaithAssist</h4>
+        <h4>✝️ FaithAssist</h4>
         <p>Biblical guidance for real life — always free.</p>
       </div>
       <div class="footer-section">
         <h4>Quick Links</h4>
-        <a href="about.html">About Us</a>
-        <a href="privacy.html">Privacy Policy</a>
+        <a href="index.html">Home</a>
+        <a href="blog/index.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
         <a href="contact.html">Contact</a>
       </div>
       <div class="footer-section">
         <h4>Disclaimer</h4>
-        <p>For spiritual encouragement only. Not a substitute for professional counseling.</p>
+        <p>For spiritual encouragement only.</p>
       </div>
     </div>
-    <div class="social-links">
-      <a href="#" id="footerShareFacebook">📘 Share on Facebook</a>
-      <a href="#" id="footerShareTwitter">🐦 Share on Twitter</a>
-      <a href="#" id="footerShareWhatsapp">📱 Share on WhatsApp</a>
-    </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 FaithAssist. All content is free to share with attribution.</p>
+      <p>&copy; 2025 FaithAssist. Free to share.</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
-  <script>
-    // ===== MARRIAGE QUESTIONNAIRE - ONE AT A TIME =====
-    const marriageQuestionsList = [
-      { id: "q1", text: "How often do you feel truly heard by your partner?", options: ["Rarely", "Sometimes", "Often", "Almost always"] },
-      { id: "q2", text: "When conflicts arise, how do you typically respond?", options: ["Avoid / Withdraw", "Get defensive", "Listen and discuss calmly", "Seek solutions together"] },
-      { id: "q3", text: "Do you trust your partner with your deepest feelings?", options: ["Not really", "Somewhat", "Mostly yes", "Completely"] },
-      { id: "q4", text: "How comfortable are you expressing appreciation to your spouse?", options: ["Uncomfortable", "Occasionally", "Regularly", "Very comfortable"] },
-      { id: "q5", text: "How would you rate the level of emotional intimacy?", options: ["Struggling", "Needs work", "Good", "Very strong"] },
-      { id: "q6", text: "Do you feel respected in decision-making?", options: ["No", "Sometimes", "Usually", "Absolutely"] },
-      { id: "q7", text: "How often do you pray or reflect together (or wish to)?", options: ["Never", "Rarely", "Sometimes", "Often together"] }
-    ];
-    
-    let currentQuestionIndex = 0;
-    let userAnswers = {};
-    
-    // Render current question
-    function renderCurrentQuestion() {
-      const container = document.getElementById('marriageQuestionContainer');
-      const question = marriageQuestionsList[currentQuestionIndex];
-      const savedAnswer = userAnswers[question.id] || '';
-      
-      let optionsHtml = '';
-      question.options.forEach(opt => {
-        const checked = (savedAnswer === opt) ? 'checked' : '';
-        optionsHtml += `
-          <label style="display: block; margin: 0.5rem 0; padding: 0.5rem; background: ${savedAnswer === opt ? '#2b5e3b10' : 'transparent'}; border-radius: 0.75rem; cursor: pointer;">
-            <input type="radio" name="marriageQuestion" value="${opt}" ${checked} style="width: auto; margin-right: 0.75rem;">
-            ${opt}
-          </label>
-        `;
-      });
-      
-      container.innerHTML = `
-        <div class="marriage-question" style="background: #fff8ef; padding: 1rem; border-radius: 1rem;">
-          <strong style="font-size: 1.1rem; color: #2b5e3b;">Question ${currentQuestionIndex + 1} of ${marriageQuestionsList.length}</strong>
-          <p style="margin: 0.75rem 0; font-size: 1rem;">${question.text}</p>
-          <div class="radio-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
-            ${optionsHtml}
-          </div>
-        </div>
-      `;
-      
-      // Add event listeners to radio buttons
-      const radios = container.querySelectorAll('input[type="radio"]');
-      radios.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-          userAnswers[question.id] = e.target.value;
-          updateProgress();
-          // Auto-advance to next question after selection (optional - uncomment if desired)
-          // if (currentQuestionIndex < marriageQuestionsList.length - 1) {
-          //   setTimeout(() => goToNextQuestion(), 300);
-          // }
-        });
-      });
-      
-      updateButtonsAndProgress();
-    }
-    
-    function updateProgress() {
-      const total = marriageQuestionsList.length;
-      const answered = Object.keys(userAnswers).length;
-      const percent = (answered / total) * 100;
-      const progressBar = document.getElementById('marriageProgress');
-      const progressPercent = document.getElementById('progressPercent');
-      if (progressBar) progressBar.style.width = percent + '%';
-      if (progressPercent) progressPercent.textContent = Math.round(percent) + '%';
-      document.getElementById('currentQNumber').textContent = currentQuestionIndex + 1;
-    }
-    
-    function updateButtonsAndProgress() {
-      const prevBtn = document.getElementById('prevQuestionBtn');
-      const nextBtn = document.getElementById('nextQuestionBtn');
-      const submitBtn = document.getElementById('submitMarriageBtn');
-      
-      // Show/hide previous button
-      if (currentQuestionIndex === 0) {
-        prevBtn.style.display = 'none';
-      } else {
-        prevBtn.style.display = 'inline-flex';
-      }
-      
-      // Show/hide next/submit buttons
-      if (currentQuestionIndex === marriageQuestionsList.length - 1) {
-        nextBtn.style.display = 'none';
-        submitBtn.style.display = 'inline-flex';
-      } else {
-        nextBtn.style.display = 'inline-flex';
-        submitBtn.style.display = 'none';
-      }
-      
-      updateProgress();
-    }
-    
-    function goToNextQuestion() {
-      const currentQuestion = marriageQuestionsList[currentQuestionIndex];
-      // Check if current question is answered
-      if (!userAnswers[currentQuestion.id]) {
-        showToast('⚠️ Please select an answer before continuing');
-        return;
-      }
-      
-      if (currentQuestionIndex < marriageQuestionsList.length - 1) {
-        currentQuestionIndex++;
-        renderCurrentQuestion();
-      }
-    }
-    
-    function goToPrevQuestion() {
-      if (currentQuestionIndex > 0) {
-        currentQuestionIndex--;
-        renderCurrentQuestion();
-      }
-    }
-    
-    function getMarriageInsights() {
-      // Calculate insights based on answers
-      let commScore = 0;
-      let trustScore = 0;
-      
-      const q1 = userAnswers.q1 || '';
-      const q2 = userAnswers.q2 || '';
-      const q3 = userAnswers.q3 || '';
-      const q4 = userAnswers.q4 || '';
-      const q5 = userAnswers.q5 || '';
-      const q6 = userAnswers.q6 || '';
-      
-      // Communication score (q1, q2, q4)
-      if (q1 === 'Often' || q1 === 'Almost always') commScore++;
-      if (q1 === 'Sometimes') commScore += 0.5;
-      if (q2 === 'Listen and discuss calmly' || q2 === 'Seek solutions together') commScore++;
-      if (q2 === 'Get defensive') commScore += 0.3;
-      if (q4 === 'Regularly' || q4 === 'Very comfortable') commScore++;
-      if (q4 === 'Occasionally') commScore += 0.5;
-      
-      // Trust score (q3, q5, q6)
-      if (q3 === 'Mostly yes' || q3 === 'Completely') trustScore++;
-      if (q3 === 'Somewhat') trustScore += 0.5;
-      if (q5 === 'Good' || q5 === 'Very strong') trustScore++;
-      if (q5 === 'Needs work') trustScore += 0.3;
-      if (q6 === 'Usually' || q6 === 'Absolutely') trustScore++;
-      if (q6 === 'Sometimes') trustScore += 0.5;
-      
-      let communicationInsight = '';
-      let trustInsight = '';
-      let growthSuggestions = '';
-      
-      if (commScore >= 2) {
-        communicationInsight = "✅ You seem to communicate openly. Keep nurturing honest conversations and active listening. Remember that good communication means feeling safe to share anything.";
-      } else if (commScore >= 1) {
-        communicationInsight = "📢 Your communication is developing. Consider creating a weekly 'check-in' time without distractions. Practice listening without interrupting and affirming what you hear.";
-      } else {
-        communicationInsight = "💬 Communication may be a challenge right now. Start small: share one feeling each day. Use 'I feel' statements instead of 'You always' statements. Consider a couples communication course.";
-      }
-      
-      if (trustScore >= 2) {
-        trustInsight = "🔒 Trust appears to be a foundation in your relationship. Continue honoring each other's hearts, keeping promises, and being transparent. Trust is built by thousands of small faithful moments.";
-      } else if (trustScore >= 1) {
-        trustInsight = "🌱 Trust is growing but needs nurturing. Start by keeping small promises consistently. Be vulnerable about one small fear or dream. Trust rebuilds slowly but surely.";
-      } else {
-        trustInsight = "⚠️ Trust may be strained right now. Rebuilding takes time and consistency. Consider counseling if betrayal has occurred. Small, predictable actions rebuild trust over time.";
-      }
-      
-      if (commScore >= 2 && trustScore >= 2) {
-        growthSuggestions = "🌟 Your relationship has a strong foundation! To grow even deeper: pray together daily, plan a monthly 'state of the union' conversation, try a marriage retreat, or serve together in ministry.";
-      } else if (commScore >= 1 || trustScore >= 1) {
-        growthSuggestions = "🌿 You're on the right track! Try a 5-minute daily gratitude exchange: share one thing you appreciate about each other. Also, consider reading a marriage book together or doing a couples devotional.";
-      } else {
-        growthSuggestions = "🕊️ Every marriage can improve. Start with one small change: a 2-minute daily check-in without phones. Ask 'How are you really doing?' and just listen. God can restore what feels broken.";
-      }
-      
-      // Add spiritual encouragement
-      const prayerTogether = userAnswers.q7 || '';
-      let spiritualNote = "";
-      if (prayerTogether === 'Often together') {
-        spiritualNote = "🙏 It's wonderful that you pray together! This is one of the strongest predictors of marriage health. Keep prioritizing spiritual intimacy.";
-      } else if (prayerTogether === 'Sometimes') {
-        spiritualNote = "✨ Consider increasing your spiritual connection. Even 2 minutes of prayer together each day can transform your marriage.";
-      } else {
-        spiritualNote = "🕯️ Try praying together for just 2 minutes daily. It doesn't have to be fancy — 'God, thank you for my spouse. Help us love each other well today.'";
-      }
-      
-      return {
-        communication: communicationInsight,
-        trust: trustInsight,
-        growth: growthSuggestions,
-        spiritual: spiritualNote
-      };
-    }
-    
-    function showMarriageResults() {
-      // Check if all questions are answered
-      if (Object.keys(userAnswers).length !== marriageQuestionsList.length) {
-        showToast(`⚠️ Please answer all ${marriageQuestionsList.length} questions first`);
-        return;
-      }
-      
-      const insights = getMarriageInsights();
-      const resultDiv = document.getElementById('marriageResult');
-      resultDiv.style.display = 'block';
-      resultDiv.innerHTML = `
-        <div style="margin-bottom: 0.75rem;"><strong>💬 Communication Insight:</strong><br>${insights.communication}</div>
-        <div style="margin-bottom: 0.75rem;"><strong>🔒 Trust Insight:</strong><br>${insights.trust}</div>
-        <div style="margin-bottom: 0.75rem;"><strong>🌱 Growth Suggestions:</strong><br>${insights.growth}</div>
-        <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #e2d9cf;"><strong>✨ Spiritual Encouragement:</strong><br>${insights.spiritual}</div>
-        <div style="margin-top: 1rem; font-size: 0.85rem; background: #2b5e3b10; padding: 0.75rem; border-radius: 0.75rem;">
-          📖 <em>"Be completely humble and gentle; be patient, bearing with one another in love." — Ephesians 4:2</em>
-        </div>
-      `;
-      
-      // Scroll to results
-      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-    
-    function resetMarriageQuestions() {
-      currentQuestionIndex = 0;
-      userAnswers = {};
-      renderCurrentQuestion();
-      document.getElementById('marriageResult').style.display = 'none';
-    }
-    
-    // Initialize marriage questionnaire
-    document.getElementById('totalQCount').textContent = marriageQuestionsList.length;
-    renderCurrentQuestion();
-    
-    // Event listeners for marriage navigation
-    document.getElementById('nextQuestionBtn').addEventListener('click', goToNextQuestion);
-    document.getElementById('prevQuestionBtn').addEventListener('click', goToPrevQuestion);
-    document.getElementById('submitMarriageBtn').addEventListener('click', showMarriageResults);
-    
-    // ===== EXISTING SITE SHARING FUNCTIONS =====
-    const siteUrl = window.location.href;
-    
-    document.getElementById('shareSiteWhatsapp')?.addEventListener('click', () => {
-      window.open(`https://wa.me/?text=FaithAssist%20-%20Free%20biblical%20guidance%20and%20prayers%0A%0A${encodeURIComponent(siteUrl)}`, '_blank');
-    });
-    
-    document.getElementById('shareSiteFacebook')?.addEventListener('click', () => {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}`, '_blank', 'width=600,height=400');
-    });
-    
-    document.getElementById('shareSiteTwitter')?.addEventListener('click', () => {
-      window.open(`https://twitter.com/intent/tweet?text=Find%20peace%20and%20biblical%20guidance%20at%20FaithAssist&url=${encodeURIComponent(siteUrl)}`, '_blank');
-    });
-    
-    document.getElementById('shareSiteEmail')?.addEventListener('click', () => {
-      window.location.href = `mailto:?subject=FaithAssist%20-%20Biblical%20Guidance&body=I%20found%20this%20helpful%20resource%20for%20biblical%20guidance%20and%20prayer%3A%0A%0A${encodeURIComponent(siteUrl)}`;
-    });
-    
-    document.getElementById('shareSiteCopy')?.addEventListener('click', () => {
-      navigator.clipboard.writeText(siteUrl);
-      showToast('📋 Link copied to clipboard!');
-    });
-    
-    // Share devotional
-    document.getElementById('shareDevotional')?.addEventListener('click', () => {
-      const verse = document.getElementById('dailyVerse')?.innerText || '';
-      const message = document.getElementById('dailyMessage')?.innerText || '';
-      const prayer = document.getElementById('dailyPrayer')?.innerText || '';
-      const content = `${verse}\n\n${message}\n\n${prayer}\n\n— Shared from FaithAssist`;
-      window.open(`https://wa.me/?text=${encodeURIComponent(content)}`, '_blank');
-    });
-    
-    // Share verse
-    document.getElementById('shareVerseBtn')?.addEventListener('click', () => {
-      const verse = document.getElementById('randomVerse')?.innerText || '';
-      window.open(`https://wa.me/?text=${encodeURIComponent('✨ ' + verse + '\n\n— From FaithAssist')}`, '_blank');
-    });
-    
-    // Footer shares
-    document.getElementById('footerShareFacebook')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}`, '_blank');
-    });
-    
-    document.getElementById('footerShareTwitter')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.open(`https://twitter.com/intent/tweet?text=Find%20biblical%20guidance%20at%20FaithAssist&url=${encodeURIComponent(siteUrl)}`, '_blank');
-    });
-    
-    document.getElementById('footerShareWhatsapp')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.open(`https://wa.me/?text=Check%20out%20FaithAssist%20for%20free%20biblical%20guidance%20and%20prayers%0A%0A${encodeURIComponent(siteUrl)}`, '_blank');
-    });
-  </script>
 </body>
 </html>
